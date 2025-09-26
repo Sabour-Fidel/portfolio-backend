@@ -3,10 +3,10 @@ from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
-# Autorise seulement ton domaine GitHub Pages en production
-CORS(app, resources={r"/*": {"origins": "https://sabour-fidel.github.io/porfolio/"}})  # Temporairement * pour tests
+# Autorise uniquement ton domaine GitHub Pages
+CORS(app, resources={r"/*": {"origins": "https://Sabour-Fidel.github.io"}})
 
-# Initialiser la DB
+# Le reste du code (init_db, get_stats, increment, routes) reste identique
 def init_db():
     conn = sqlite3.connect('stats.db')
     cursor = conn.cursor()
@@ -15,9 +15,6 @@ def init_db():
     conn.commit()
     conn.close()
 
-init_db()
-
-# Récupérer les stats
 def get_stats():
     conn = sqlite3.connect('stats.db')
     cursor = conn.cursor()
@@ -26,7 +23,6 @@ def get_stats():
     conn.close()
     return {'views': row[0], 'shares': row[1]}
 
-# Incrémenter un champ
 def increment(field):
     conn = sqlite3.connect('stats.db')
     cursor = conn.cursor()
