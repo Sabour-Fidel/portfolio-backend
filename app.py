@@ -4,7 +4,7 @@ import sqlite3
 
 app = Flask(__name__)
 # Autorise seulement ton domaine GitHub Pages en production
-CORS(app, resources={r"/*": {"origins": "*"}})  # Temporairement * pour tests
+CORS(app, resources={r"/*": {"origins": "https://sabour-fidel.github.io/porfolio/"}})  # Temporairement * pour tests
 
 # Initialiser la DB
 def init_db():
